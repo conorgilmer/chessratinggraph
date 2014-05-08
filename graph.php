@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Interactive Line Graph</title>
+        <title>My Chess Rating in a Line Graph</title>
         <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
         <script>
             var graph;
@@ -123,7 +123,7 @@
 	<p> Graph using JQuery</p>
 	</td>
 	<td>
-<img src="rating.php?param=jumble"/>
+<img src="rating.php?param=1672"/>
 	<p> Graph using PHP</p>
 	</td>
 	</tr>
