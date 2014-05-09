@@ -127,6 +127,14 @@
 	<p> Graph using PHP</p>
 	</td>
 	</tr>
+	<tr>
+	<td>
+	<img src="ratingmay2014.png"/>
+	<p> Graph generated with Python</p>
+	</td>
+	<td>
+	</td>
+	</tr>
 	</table>
 <p>
 My first rating was 1212 back in the mid eighties - i have missed a few ratings from the past but have them online since 2001. A gradual decline well more a declining plateau.
