@@ -32,11 +32,10 @@ public class GraphPanel extends JPanel {
     private int pointWidth = 4;
     private int numberYDivisions = 10;
     private List<Double> scores;
-	static int [] ratings = {1212,1396,1454,1727,1727,1785,1764,1751,1737,1675,1688,1702,1657,1666,1662,1667,1672};
+    public static int [] ratings = {1212,1396,1454,1727,1727,1785,1764,1751,1737,1675,1688,1702,1657,1666,1662,1667,1672};
     public static int [] years = {1984,1985,1986,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014};
-    //public static int [] ratings = {1727,1727,1785,1764,1751,1737,1675,1688,1702,1657,1666,1662,1667,1672};
-    //public static int [] years = {2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014};
-
+    String xaxisText = "Years";
+    String yaxisText = "Grading";
 
 
     public GraphPanel(List<Double> scores) {
@@ -77,12 +76,11 @@ public class GraphPanel extends JPanel {
                 String yLabel = ((int) ((getMinScore() + (getMaxScore() - getMinScore()) * ((i * 1.0) / numberYDivisions)) * 100)) / 100.0 + "";
                 FontMetrics metrics = g2.getFontMetrics();
                 int labelWidth = metrics.stringWidth(yLabel);
-                g2.drawString(yLabel, x0 - labelWidth - 5, y0 + (metrics.getHeight() / 2) - 3);
+                g2.drawString(yLabel.replaceAll("^.0*$", ""), x0 - labelWidth - 5, y0 + (metrics.getHeight() / 2) - 3);
             }
             g2.drawLine(x0, y0, x1, y1);
         }
 
-		int displayxNum =2001;
         // and for x axis
         for (int i = 0; i < scores.size(); i++) {
             if (scores.size() > 1) {
@@ -94,7 +92,6 @@ public class GraphPanel extends JPanel {
                     g2.setColor(gridColor);
                     g2.drawLine(x0, getHeight() - padding - labelPadding - 1 - pointWidth, x1, padding);
                     g2.setColor(Color.BLACK);
-		    displayxNum = displayxNum + 1;
                     String xLabel = years[i] + "";
                     FontMetrics metrics = g2.getFontMetrics();
                     int labelWidth = metrics.stringWidth(xLabel);
@@ -107,6 +104,10 @@ public class GraphPanel extends JPanel {
         // create x and y axes 
         g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, padding + labelPadding, padding);
         g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, getWidth() - padding, getHeight() - padding - labelPadding);
+
+	// draw axis text label on the screen
+	g2.drawString(xaxisText, getWidth()/2, getHeight() -(labelPadding / 2));
+	g2.drawString(yaxisText, 130 , getHeight() / 2);
 
         Stroke oldStroke = g2.getStroke();
         g2.setColor(lineColor);
