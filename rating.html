@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["imagelinechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'ICU', 'FIDE'],
+       [ '1984', 1212, 0],
+       [ '1985', 1396, 0],
+       [ '1986', 1454, 0],
+       [ '2001', 1727, 0],
+       [ '2003', 1785, 0],
+       [ '2004', 1764, 0],
+       [ '2005', 1751, 0],
+       [ '2006', 1737, 0],
+       [ '2007', 1675, 0],
+       [ '2008', 1688, 0],
+       [ '2009', 1702, 0],
+       [ '2010', 1657, 0],
+       [ '2011', 1666, 0],
+       [ '2012', 1662, 0],
+       [ '2013', 1667, 0],
+       [ '2014', 1672, 1790],
+       [ '2015', 1640, 1770],
+       [ '2016', 1672, 1800]
+        ]);
+
+        var chart = new google.visualization.ImageLineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, {width: 400, height: 240, min: 0});
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 400px; height: 240px;"></div>
+  </body>
+</html>
