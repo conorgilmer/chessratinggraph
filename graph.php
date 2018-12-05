@@ -129,10 +129,13 @@
 	</tr>
 	<tr>
 	<td>
-	<img src="ratingmay2014.png"/>
+	<img src="ratingmay2014.png" width="500" height"375"/>
 	<p> Graph generated with Python</p>
 	</td>
 	<td>
+            <img src="ratingjava.png"  width="500" height"375"/>
+    <p> Graph generated with Java</p>
+
 	</td>
 	</tr>
 	</table>
@@ -141,7 +144,7 @@ My first rating was 1212 back in the mid eighties - i have missed a few ratings 
 
 </p>
 <!-- Piwik -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
@@ -154,6 +157,7 @@ My first rating was 1212 back in the mid eighties - i have missed a few ratings 
   })();
 </script>
 <noscript><p><img src="http://162.244.27.137/metrics/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+-->
 <!-- End Piwik Code -->
 
 <!--google anlaytics -->
