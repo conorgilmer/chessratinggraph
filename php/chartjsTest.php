@@ -51,6 +51,10 @@ $conn->close();
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <h2> Testing Chart.js</h2>
+<div class="toolbar">
+			<button onclick="toggleSmooth(this)">Smooth</button>
+		</div>
+
 <canvas id="line-chart" width="400" height="225"></canvas>
 <script>
 

@@ -1,11 +1,26 @@
 <?php
-$graphTitle = "My Results";
-$xaxisTitle = "Years";
-$yaxisTitle = "Number";
-
+/* usage chartjsResultsBar.php?title=results&xaxis=years&yaxis=numbers&stacked=true&yeartart=2013&bartype=horizontal
+*/
+$graphTitle = $_GET['title'];
+//$graphTitle = "My Results";
+$xaxisTitle = $_GET['xaxis'];
+//$xaxisTitle = "Years";
+$yaxisTitle = $_GET['yaxis'];
+//$yaxisTitle = "Number";
+$stacked = $_GET['stacked'];
+$bartype = $_GET['bartype'];
+$yearStart = $_GET['yearstart'];
 include('config.php');
 
-$sql_query = "SELECT icu_rating, wins, draw, losses, year from $dbtable where year > 2012";
+/* horizontal bar if indicated so */
+if ($bartype == 'horizontal') {
+	$barType = 'horizontalBar';
+} else {
+	$barType = 'bar';
+}
+
+
+$sql_query = "SELECT icu_rating, wins, draw, losses, year from $dbtable where year > $yearStart";
 
 // Create connection
 $conn = new mysqli($dbhost, $dbuser, $dbpassword, $dbdatabase);
@@ -67,31 +82,31 @@ $conn->close();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <h2> Results Chart.js</h2>
 <div>
-<canvas id="line-chart" width="400" height="225"></canvas>
+<canvas id="bar-chart" width="400" height="225"></canvas>
 </div>
 <script>
 
 // Bar chart
-new Chart(document.getElementById("line-chart"), {
-    type: 'line',
+new Chart(document.getElementById("bar-chart"), {
+    type: '<?php echo $barType;?>',
     data: {
       labels: [<?echo $strYears;?>],
       datasets: [
         {
           label: "Wins",
- borderColor: "#11aa11",
+ backgroundColor: "#11aa11",
           data: [<?echo $strWins;?>],
 	  fill: false
         },
         {
           label: "Drawn",
- borderColor: "#c45850",
+ backgroundColor: "#c45850",
           data: [<?echo $strDraws;?>],
 	  fill: false
         },
         {
           label: "Losses",
-          borderColor: "#ff3322",
+          backgroundColor: "#ff3322",
           data: [<?echo $strLosses;?>],
 	  fill: false
         },
@@ -107,6 +122,7 @@ new Chart(document.getElementById("line-chart"), {
 scales: {
                     xAxes: [{
                             display: true,
+                            stacked: <?echo $stacked;?>,
                             scaleLabel: {
                                 display: true,
                                 labelString: '<?php echo $xaxisTitle;?>'
@@ -114,6 +130,7 @@ scales: {
                         }],
                     yAxes: [{
                             display: true,
+                            stacked: <?echo $stacked;?>,
                             ticks: {
                                 beginAtZero: true,
                                 max: 11
